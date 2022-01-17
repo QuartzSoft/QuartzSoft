@@ -2,8 +2,9 @@
 window.addEventListener('DOMContentLoaded', function() {
 const hamburger=document.querySelector('.hamburger'),
         menu=document.querySelector('.menu'),
+        menuList=document.querySelector('.menu__list'),
         closeElem=document.querySelector('.menu__close'),
-        menuLink=document.querySelector('.menu__link'),
+        menuLink=document.querySelectorAll('.menu__link'),
         upbtn=document.querySelector('.pageup');
        
       
@@ -12,10 +13,19 @@ hamburger.addEventListener('click',()=>{
 });
 closeElem.addEventListener('click',()=>{
     menu.classList.remove('active');
+
 });
-menuLink.addEventListener('click',()=>{
-  menu.classList.remove('active');
+menuList.addEventListener('click',(e)=>{
+    const target=e.target;
+    menuLink.forEach((item)=>{      
+        if (target == item) {          
+            menu.classList.remove('active');
+        }
+    }
+
+    );
 });
+
 //var slider = tns({
 //    container: '.cert-slider',
 //   items: 1,
@@ -46,7 +56,7 @@ var slider = tns({
 
   window.addEventListener('scroll',()=>{
     
-    if (document.documentElement.scrollTop>1200){
+    if (document.documentElement.scrollTop>800){
       upbtn.classList.add('pageup_show');
       upbtn.classList.remove('pageup_hide');
     }else{
